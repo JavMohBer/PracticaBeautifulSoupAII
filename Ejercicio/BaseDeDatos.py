@@ -18,7 +18,7 @@ def insertarValoresBaseDeDatos(nombre, enlace, autor, fechainic, respuestas, vis
 
     baseDeDatos.commit()
 
-def consultas(consulta):
+def consultar(consulta):
     cursor = baseDeDatos.execute(consulta)
 
 def cerrarBaseDeDatos():
