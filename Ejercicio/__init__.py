@@ -1,9 +1,8 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-# import BaseDeDatos
-# import InterfazGrafica
-# import Scraping
+import BaseDeDatos
+import InterfazGrafica
 
 mensajeInicial = '''Elija la opción que desee realizar:
 1: Crear la base de datos
@@ -16,12 +15,12 @@ opcion = input()
 
 while True:
     if opcion is 1:
-        #BaseDeDatos.cerrarBaseDeDatos()
+        BaseDeDatos.crearBaseDeDatos()
         print "Base de datos creada correctamente"
         break
     elif opcion is 2:
         print 2
-        #InterfazGrafica.ventana()
+        InterfazGrafica.ventana()
         break
     elif opcion is 0:
         print "Fin del programa"

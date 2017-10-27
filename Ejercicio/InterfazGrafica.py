@@ -3,19 +3,23 @@
 
 import Tkinter as tk
 import BaseDeDatos
-#import Scraping
+import Scraping
+
+def cargarDatos():
+    titulos, enlaces, autores, fechas, respuestas, visitas = Scraping.scrap()
+    for i in range(len(titulos)):
+        BaseDeDatos.insertarValoresBaseDeDatos(titulos[i], enlaces[i], autores[i], fechas[i], respuestas[i], visitas[i])
 
 def mostrarTodo():
-    BaseDeDatos.consultar("SELECT nombre from TEMA")
-
-def buscarPorTema():
-    BaseDeDatos.consultar()
+    BaseDeDatos.consultar("SELECT titulo, autor, fechainic, from TEMA")
 
 def temasMasPopulares():
-    BaseDeDatos.consultar()
+    lista = BaseDeDatos.consultar("SELECT titulo, autor, fechainic, visitas from TEMA ORDER BY visitas")
+    return lista[0:5]
 
 def temasMasActivos():
-    BaseDeDatos.consultar()
+    lista =  BaseDeDatos.consultar("SELECT titulo, autor, fechainic, respuestas from TEMA ORDER BY respuestas")
+    return lista[0:5]
 
 def ventana():
     top = tk.Tk()
@@ -25,7 +29,7 @@ def ventana():
     datos["menu"] = datos.menu
     datos.grid(row=0, column=0)
 
-    datos.menu.add_command(label="Cargar")
+    datos.menu.add_command(label="Cargar", command=cargarDatos())
     datos.menu.add_command(label="Mostrar", command=mostrarTodo())
     datos.menu.add_command(label="Salir", command=top.quit)
 
