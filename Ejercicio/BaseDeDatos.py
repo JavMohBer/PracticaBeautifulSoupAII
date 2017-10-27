@@ -12,9 +12,9 @@ def crearBaseDeDatos():
              VISITAS        INTEGER               NOT NULL);''')
     baseDeDatos.commit()
 
-def insertarValoresBaseDeDatos(nombre, enlace, autor, fechainic, respuestas, visitas):
+def insertarValoresBaseDeDatos(titulo, enlace, autor, fechainic, respuestas, visitas):
     baseDeDatos.execute("INSERT INTO TEMA (TITULO,ENLACE,AUTOR,FECHAINIC,RESPUESTAS,VISITAS) \
-          VALUES (nombre, enlace, autor, fechainic, respuestas, visitas)");
+          VALUES (titulo, enlace, autor, fechainic, respuestas, visitas)");
 
     baseDeDatos.commit()
 
