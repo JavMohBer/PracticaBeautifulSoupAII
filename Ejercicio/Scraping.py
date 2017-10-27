@@ -1,4 +1,4 @@
-import bs4
-import urllib
+from bs4 import BeautifulSoup
+import urllib2
 
-url1 = "url"
+url = "url"
