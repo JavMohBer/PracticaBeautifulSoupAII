@@ -3,24 +3,23 @@ import sqlite3
 baseDeDatos = sqlite3.connect("baseDeDatos.db")
 
 def crearBaseDeDatos():
-    baseDeDatos.execute('''CREATE TABLE NOMBRE
-             (ID INT PRIMARY KEY    NOT NULL,
-             NOMBRE         TEXT    NOT NULL,
-             CATEGORIA      TEXT    NOT NULL,
-             LINK           TEXT    NOT NULL,
-             PRECIO         REAL    NOT NULL,
-             PRECIODESC     REAL,
-             DESCUENTO      REAL);''')
+    baseDeDatos.execute('''CREATE TABLE TEMA
+            (TITULO         TEXT                  NOT NULL,
+             ENLACE         TEXT PRIMARY KEY      NOT NULL,
+             AUTOR          TEXT                  NOT NULL,
+             FECHAINIC      TEXT                  NOT NULL,
+             RESPUESTAS     INTEGER               NOT NULL,
+             VISITAS        INTEGER               NOT NULL);''')
     baseDeDatos.commit()
 
-def insertarValoresBaseDeDatos(atributos):
-    baseDeDatos.execute("INSERT INTO NOMBRE (ID,NOMBRE,CATEGORIA,LINK,PRECIO, PRECIODESC, DESCUENTO) \
-          VALUES (1, 'Nombre', 'Categoria', 'link.html', 20.00, NULL, NULL)");
+def insertarValoresBaseDeDatos(nombre, enlace, autor, fechainic, respuestas, visitas):
+    baseDeDatos.execute("INSERT INTO TEMA (TITULO,ENLACE,AUTOR,FECHAINIC,RESPUESTAS,VISITAS) \
+          VALUES (nombre, enlace, autor, fechainic, respuestas, visitas)");
 
     baseDeDatos.commit()
 
-def consultas():
-    cursor = baseDeDatos.execute("SELECT id FROM PRODUCTO")
+def consultas(consulta):
+    cursor = baseDeDatos.execute(consulta)
 
 def cerrarBaseDeDatos():
     baseDeDatos.close()
