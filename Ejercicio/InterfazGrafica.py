@@ -10,3 +10,6 @@ def ventana():
     listar.grid(row=0, column=1)
 
     top.mainloop()
+
+if __name__ == '__main__':
+    ventana()
